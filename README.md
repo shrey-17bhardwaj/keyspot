@@ -8,12 +8,13 @@
 **[▶ Try the live demo](https://shrey-17bhardwaj.github.io/keyspot/)**
 
 <p>
-  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/scroll_tracking.gif" width="45%" alt="A spotlight tracking a target while the user scrolls" />
-  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/pointer_sweep.gif" width="45%" alt="The animated hand pointer sweeping along an arc between two targets" />
+  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/shapes.gif" width="32%" alt="Spotlight shapes: circle, rounded rect, stadium and a custom path" />
+  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/pointer.gif" width="32%" alt="The animated hand pointer gliding and rotating between targets" />
+  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/gesture.gif" width="32%" alt="Teaching a drag and a pinch gesture with the animated hand" />
 </p>
 <p>
-  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/tour.gif" width="45%" alt="A multi-step guided tour with content cards" />
-  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/shapes.gif" width="45%" alt="Spotlight shapes: circle, rounded rect, stadium and a custom path" />
+  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/tour.gif" width="32%" alt="A multi-step guided tour with content cards" />
+  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/theming.gif" width="32%" alt="A ring stack settling, then swapping the pointer through several costumes" />
 </p>
 
 ---
