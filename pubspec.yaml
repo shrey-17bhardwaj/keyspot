@@ -3,9 +3,8 @@ description: >-
   Drift-free spotlight highlights and animated hand-pointer gestures for
   onboarding and feature tours. Anchored to GlobalKeys, tracked live every frame.
 version: 0.0.1
-# TODO: replace YOUR_GITHUB_USERNAME after creating the repo, before publishing.
-repository: https://github.com/YOUR_GITHUB_USERNAME/keyspot
-issue_tracker: https://github.com/YOUR_GITHUB_USERNAME/keyspot/issues
+repository: https://github.com/shrey-17bhardwaj/keyspot
+issue_tracker: https://github.com/shrey-17bhardwaj/keyspot/issues
 
 topics:
   - onboarding
