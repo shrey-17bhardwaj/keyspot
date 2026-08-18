@@ -24,7 +24,7 @@ class _PointerPlaygroundDemoState extends State<PointerPlaygroundDemo> {
   double _degrees = 0.0;
   double _arcHeight = 0.0;
   bool _useArc = false;
-  String _status = 'idle';
+  String _status = 'Idle — press "Show at A" to begin.';
 
   KeyspotPointer get _pointer => widget.keyspot.pointer;
 
@@ -39,9 +39,8 @@ class _PointerPlaygroundDemoState extends State<PointerPlaygroundDemo> {
     await action();
     watch.stop();
     if (mounted) {
-      setState(
-          () => _status = '$label finished in ${watch.elapsedMilliseconds}ms '
-              '(phase: ${_pointer.phase.name})');
+      setState(() => _status = '$label · ${watch.elapsedMilliseconds} ms · '
+          'phase: ${_pointer.phase.name}');
     }
   }
 
@@ -52,7 +51,7 @@ class _PointerPlaygroundDemoState extends State<PointerPlaygroundDemo> {
       height: 64.0,
       decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       alignment: Alignment.center,
-      child: Text(label),
+      child: Text(label, style: const TextStyle(color: Colors.white)),
     );
   }
 
@@ -60,6 +59,7 @@ class _PointerPlaygroundDemoState extends State<PointerPlaygroundDemo> {
   Widget build(BuildContext context) {
     return DemoScaffold(
       title: 'Pointer playground',
+      subtitle: 'Every pointer call, driven by hand.',
       body: Column(
         children: <Widget>[
           Expanded(
@@ -85,9 +85,9 @@ class _PointerPlaygroundDemoState extends State<PointerPlaygroundDemo> {
             child: Column(
               children: <Widget>[
                 Text(_status, style: Theme.of(context).textTheme.bodySmall),
-                _slider('duration', _durationMs, 100.0, 3000.0,
+                _slider('Duration (ms)', _durationMs, 100.0, 3000.0,
                     (double v) => setState(() => _durationMs = v)),
-                _slider('rotation°', _degrees, -180.0, 180.0,
+                _slider('Rotation (°)', _degrees, -180.0, 180.0,
                     (double v) => setState(() => _degrees = v)),
                 Row(
                   children: <Widget>[
@@ -95,7 +95,7 @@ class _PointerPlaygroundDemoState extends State<PointerPlaygroundDemo> {
                       value: _useArc,
                       onChanged: (bool v) => setState(() => _useArc = v),
                     ),
-                    const Text('arc'),
+                    const Text('Arc'),
                     Expanded(
                       child: Slider(
                         value: _arcHeight,
@@ -116,15 +116,15 @@ class _PointerPlaygroundDemoState extends State<PointerPlaygroundDemo> {
       actions: <Widget>[
         FilledButton(
           onPressed: () => _run(
-            'show at A',
+            'Show at A',
             () => _pointer.show(_a.anchor(),
                 rotation: Rotation.degrees(_degrees)),
           ),
-          child: const Text('show at A'),
+          child: const Text('Show at A'),
         ),
         FilledButton.tonal(
           onPressed: () => _run(
-            'moveTo B',
+            'Glide to B',
             () => _pointer.moveTo(
               _b.anchor(),
               duration: _duration,
@@ -132,11 +132,11 @@ class _PointerPlaygroundDemoState extends State<PointerPlaygroundDemo> {
               rotation: Rotation.degrees(_degrees),
             ),
           ),
-          child: const Text('moveTo B'),
+          child: const Text('Glide to B'),
         ),
         FilledButton.tonal(
           onPressed: () => _run(
-            'moveTo C',
+            'Glide to C',
             () => _pointer.moveTo(
               _c.anchor(),
               duration: _duration,
@@ -144,16 +144,16 @@ class _PointerPlaygroundDemoState extends State<PointerPlaygroundDemo> {
               rotation: Rotation.degrees(_degrees),
             ),
           ),
-          child: const Text('moveTo C'),
+          child: const Text('Glide to C'),
         ),
         OutlinedButton(
           onPressed: () =>
-              _run('tapPulse x2', () => _pointer.tapPulse(count: 2)),
-          child: const Text('tapPulse ×2'),
+              _run('Tap pulse ×2', () => _pointer.tapPulse(count: 2)),
+          child: const Text('Tap pulse ×2'),
         ),
         OutlinedButton(
           onPressed: () => _run(
-            'sweep A→C',
+            'Sweep A → C',
             () => _pointer.sweep(
               _a.anchor(),
               _c.anchor(),
@@ -162,11 +162,11 @@ class _PointerPlaygroundDemoState extends State<PointerPlaygroundDemo> {
               tapOnArrival: true,
             ),
           ),
-          child: const Text('sweep A→C'),
+          child: const Text('Sweep A → C'),
         ),
         TextButton(
-          onPressed: () => _run('hide', _pointer.hide),
-          child: const Text('hide'),
+          onPressed: () => _run('Hide pointer', _pointer.hide),
+          child: const Text('Hide pointer'),
         ),
       ],
     );
@@ -181,7 +181,7 @@ class _PointerPlaygroundDemoState extends State<PointerPlaygroundDemo> {
   ) {
     return Row(
       children: <Widget>[
-        SizedBox(width: 84.0, child: Text('$label ${value.round()}')),
+        SizedBox(width: 118.0, child: Text('$label · ${value.round()}')),
         Expanded(
           child: Slider(value: value, min: min, max: max, onChanged: onChanged),
         ),

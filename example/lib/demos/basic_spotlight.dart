@@ -18,7 +18,7 @@ class BasicSpotlightDemo extends StatefulWidget {
 class _BasicSpotlightDemoState extends State<BasicSpotlightDemo> {
   final GlobalKey _inboxKey = GlobalKey();
   final GlobalKey _composeKey = GlobalKey();
-  String _log = 'Nothing yet.';
+  String _log = 'Try one of the buttons below.';
 
   Future<void> _fakeNarration() async {
     await Future<void>.delayed(const Duration(seconds: 3));
@@ -28,6 +28,7 @@ class _BasicSpotlightDemoState extends State<BasicSpotlightDemo> {
   Widget build(BuildContext context) {
     return DemoScaffold(
       title: 'Basic spotlight',
+      subtitle: 'Four ways a spotlight can appear and dismiss.',
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -46,7 +47,8 @@ class _BasicSpotlightDemoState extends State<BasicSpotlightDemo> {
               alignment: Alignment.centerRight,
               child: FloatingActionButton.extended(
                 key: _composeKey,
-                onPressed: () => setState(() => _log = 'Compose tapped!'),
+                onPressed: () => setState(() =>
+                    _log = 'Compose tapped — the real button still works.'),
                 icon: const Icon(Icons.edit),
                 label: const Text('Compose'),
               ),
@@ -60,7 +62,7 @@ class _BasicSpotlightDemoState extends State<BasicSpotlightDemo> {
         FilledButton(
           // No rings argument: this one shows the theme default on purpose.
           onPressed: () => widget.keyspot.spotlight(_inboxKey),
-          child: const Text('Spotlight inbox (2s)'),
+          child: const Text('Spotlight the inbox (2 s)'),
         ),
         FilledButton.tonal(
           onPressed: () => widget.keyspot.spotlight(
@@ -74,11 +76,11 @@ class _BasicSpotlightDemoState extends State<BasicSpotlightDemo> {
             duration: const Duration(seconds: 30),
             semanticLabel: 'Compose button',
           ),
-          child: const Text('Tap anywhere to dismiss'),
+          child: const Text('Announce Compose — tap to dismiss'),
         ),
         FilledButton.tonal(
           onPressed: () async {
-            setState(() => _log = 'Narrating…');
+            setState(() => _log = 'Narrating for three seconds…');
             await widget.keyspot.spotlight(
               _composeKey,
               // A slow lavender breath while the narration plays.
@@ -96,10 +98,11 @@ class _BasicSpotlightDemoState extends State<BasicSpotlightDemo> {
               until: _fakeNarration,
             );
             if (mounted) {
-              setState(() => _log = 'Narration finished, spotlight released.');
+              setState(() => _log =
+                  'Narration finished — the spotlight let go on its own.');
             }
           },
-          child: const Text('Hold until an action finishes'),
+          child: const Text('Hold while narration plays'),
         ),
         OutlinedButton(
           onPressed: () => widget.keyspot.spotlight(
@@ -118,11 +121,12 @@ class _BasicSpotlightDemoState extends State<BasicSpotlightDemo> {
               RingStyle(color: Color(0xFF1B5E20), width: 2.0, gap: 4.0),
             ],
             barrier: SpotBarrier.targetOnly(
-              onTargetTap: () => setState(() => _log = 'You did the thing.'),
+              onTargetTap: () => setState(
+                  () => _log = 'Nice — you tapped the real Compose button.'),
             ),
             duration: const Duration(seconds: 60),
           ),
-          child: const Text('You must tap the button'),
+          child: const Text('Make me tap Compose'),
         ),
       ],
     );

@@ -23,7 +23,7 @@ class _FullTourDemoState extends State<FullTourDemo> {
   final GlobalKey _navKey = GlobalKey();
 
   final InMemoryTourStorage _storage = InMemoryTourStorage();
-  String _result = 'Tour not run yet.';
+  String _result = 'The tour has not run yet.';
 
   Widget _card(
     BuildContext context,
@@ -217,7 +217,11 @@ class _FullTourDemoState extends State<FullTourDemo> {
                     final TourResult result =
                         await widget.keyspot.startTour(_buildTour());
                     if (mounted) {
-                      setState(() => _result = 'Tour ended: ${result.name}');
+                      setState(() => _result = switch (result) {
+                            TourResult.completed => 'Tour completed — nice!',
+                            TourResult.skipped => 'Tour skipped.',
+                            TourResult.cancelled => 'Tour cancelled.',
+                          });
                     }
                   },
                   child: const Text('Start tour'),
@@ -225,11 +229,12 @@ class _FullTourDemoState extends State<FullTourDemo> {
                 OutlinedButton(
                   onPressed: () async {
                     // Storage remembers a completed tour; this forgets it.
-                    setState(() =>
-                        _result = 'Seen: ${_storage.seenTourIds.join(', ')} — '
-                            'start again to see it skip.');
+                    setState(() => _result = _storage.seenTourIds.isEmpty
+                        ? 'No tours remembered yet.'
+                        : 'Remembered: ${_storage.seenTourIds.join(', ')} — '
+                            'a remembered tour will not run again.');
                   },
-                  child: const Text('What has been seen?'),
+                  child: const Text('Which tours are remembered?'),
                 ),
               ],
             ),

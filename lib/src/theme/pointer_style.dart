@@ -16,8 +16,6 @@ class PointerStyle {
     this.handColor = const Color(0xFFFFFFFF),
     this.handOutlineColor = const Color(0x66000000),
     this.dotColor = const Color(0xFF4DD0E1),
-    this.arrivedDotColor = const Color(0xFF7C4DFF),
-    this.showGlowDot = true,
     this.hotspot = const Alignment(-0.34, -0.92),
     this.flipForRtl = false,
     this.scaleWithTextScaler = false,
@@ -42,14 +40,9 @@ class PointerStyle {
   /// Outline colour of the built-in hand. Ignored when [builder] is supplied.
   final Color handOutlineColor;
 
-  /// Colour of the glow dot while the pointer is idle or moving.
+  /// Colour of the ripple ring that [KeyspotPointer.tapPulse] expands from
+  /// the hotspot.
   final Color dotColor;
-
-  /// Colour the glow dot animates to once the pointer arrives at its target.
-  final Color arrivedDotColor;
-
-  /// Whether to paint the pulsing glow dot at the pointer's hotspot.
-  final bool showGlowDot;
 
   /// Which point of the pointer widget sits exactly on the resolved anchor.
   ///
@@ -74,8 +67,6 @@ class PointerStyle {
     Color? handColor,
     Color? handOutlineColor,
     Color? dotColor,
-    Color? arrivedDotColor,
-    bool? showGlowDot,
     Alignment? hotspot,
     bool? flipForRtl,
     bool? scaleWithTextScaler,
@@ -86,8 +77,6 @@ class PointerStyle {
       handColor: handColor ?? this.handColor,
       handOutlineColor: handOutlineColor ?? this.handOutlineColor,
       dotColor: dotColor ?? this.dotColor,
-      arrivedDotColor: arrivedDotColor ?? this.arrivedDotColor,
-      showGlowDot: showGlowDot ?? this.showGlowDot,
       hotspot: hotspot ?? this.hotspot,
       flipForRtl: flipForRtl ?? this.flipForRtl,
       scaleWithTextScaler: scaleWithTextScaler ?? this.scaleWithTextScaler,
@@ -112,9 +101,6 @@ class PointerStyle {
       handOutlineColor: Color.lerp(a.handOutlineColor, b.handOutlineColor, t) ??
           a.handOutlineColor,
       dotColor: Color.lerp(a.dotColor, b.dotColor, t) ?? a.dotColor,
-      arrivedDotColor: Color.lerp(a.arrivedDotColor, b.arrivedDotColor, t) ??
-          a.arrivedDotColor,
-      showGlowDot: t < 0.5 ? a.showGlowDot : b.showGlowDot,
       hotspot: Alignment.lerp(a.hotspot, b.hotspot, t) ?? a.hotspot,
       flipForRtl: t < 0.5 ? a.flipForRtl : b.flipForRtl,
       scaleWithTextScaler:
@@ -133,8 +119,6 @@ class PointerStyle {
         other.handColor == handColor &&
         other.handOutlineColor == handOutlineColor &&
         other.dotColor == dotColor &&
-        other.arrivedDotColor == arrivedDotColor &&
-        other.showGlowDot == showGlowDot &&
         other.hotspot == hotspot &&
         other.flipForRtl == flipForRtl &&
         other.scaleWithTextScaler == scaleWithTextScaler;
@@ -147,8 +131,6 @@ class PointerStyle {
         handColor,
         handOutlineColor,
         dotColor,
-        arrivedDotColor,
-        showGlowDot,
         hotspot,
         flipForRtl,
         scaleWithTextScaler,
