@@ -1,0 +1,4 @@
+tags:
+  # Pixel-snapshot tests. Generated on macOS; excluded from the Linux CI job
+  # and run by the dedicated macOS golden job instead.
+  golden:
