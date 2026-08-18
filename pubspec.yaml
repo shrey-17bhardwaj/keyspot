@@ -1,0 +1,28 @@
+name: keyspot
+description: >-
+  Drift-free spotlight highlights and animated hand-pointer gestures for
+  onboarding and feature tours. Anchored to GlobalKeys, tracked live every frame.
+version: 0.0.1
+# TODO: replace YOUR_GITHUB_USERNAME after creating the repo, before publishing.
+repository: https://github.com/YOUR_GITHUB_USERNAME/keyspot
+issue_tracker: https://github.com/YOUR_GITHUB_USERNAME/keyspot/issues
+
+topics:
+  - onboarding
+  - showcase
+  - tutorial
+  - spotlight
+  - walkthrough
+
+environment:
+  sdk: ^3.12.2
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
