@@ -1,4 +1,29 @@
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+  language:
+    strict-casts: true
+    strict-raw-types: true
+  errors:
+    public_member_api_docs: warning
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
+
+linter:
+  rules:
+    # Every public member is documented — enforced, not aspirational.
+    public_member_api_docs: true
+    # Keep the API surface explicit and stable.
+    always_declare_return_types: true
+    prefer_final_locals: true
+    unawaited_futures: true
+    avoid_redundant_argument_values: false
+
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

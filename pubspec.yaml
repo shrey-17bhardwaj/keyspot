@@ -2,7 +2,7 @@ name: keyspot
 description: >-
   Drift-free spotlight highlights and animated hand-pointer gestures for
   onboarding and feature tours. Anchored to GlobalKeys, tracked live every frame.
-version: 0.0.1
+version: 0.3.0
 repository: https://github.com/shrey-17bhardwaj/keyspot
 issue_tracker: https://github.com/shrey-17bhardwaj/keyspot/issues
 
@@ -14,7 +14,7 @@ topics:
   - walkthrough
 
 environment:
-  sdk: ^3.12.2
+  sdk: ">=3.4.0 <4.0.0"
   flutter: ">=3.22.0"
 
 dependencies:
