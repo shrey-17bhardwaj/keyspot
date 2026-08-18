@@ -1,0 +1,11 @@
+{
+  "name": "keyspot demo",
+  "short_name": "keyspot",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#101418",
+  "theme_color": "#101418",
+  "description": "Drift-free spotlights and guided hand gestures for Flutter.",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false
+}
