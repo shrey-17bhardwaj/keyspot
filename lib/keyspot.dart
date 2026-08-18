@@ -5,4 +5,4 @@
 /// spotlight shapes/rings/barriers, and the animated hand pointer) is being
 /// implemented now; see the package README and SPEC.md in the repository for
 /// the full design.
-library keyspot;
+library;
