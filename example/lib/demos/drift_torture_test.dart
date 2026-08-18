@@ -38,6 +38,7 @@ class _DriftTortureTestDemoState extends State<DriftTortureTestDemo>
   Widget build(BuildContext context) {
     return DemoScaffold(
       title: 'Drift torture test',
+      subtitle: 'Orbiting, rotating, resizing — the overlays stay glued.',
       body: AnimatedBuilder(
         animation: _orbit,
         builder: (BuildContext context, Widget? child) {
@@ -74,7 +75,7 @@ class _DriftTortureTestDemoState extends State<DriftTortureTestDemo>
             borderRadius: BorderRadius.circular(16.0),
           ),
           alignment: Alignment.center,
-          child: const Text('catch me'),
+          child: const Text('Catch me!', style: TextStyle(color: Colors.white)),
         ),
       ),
       actions: <Widget>[
@@ -104,18 +105,18 @@ class _DriftTortureTestDemoState extends State<DriftTortureTestDemo>
         ),
         FilledButton.tonal(
           onPressed: () => widget.keyspot.pointer.show(_movingKey.anchor()),
-          child: const Text('Pin the pointer to it'),
+          child: const Text('Pin the pointer on it'),
         ),
         OutlinedButton(
           onPressed: () => setState(() => _resizing = !_resizing),
-          child: Text(_resizing ? 'Stop resizing' : 'Resize too'),
+          child: Text(_resizing ? 'Stop the resizing' : 'Resize it too'),
         ),
         TextButton(
           onPressed: () {
             widget.keyspot.hideSpotlight();
             widget.keyspot.pointer.hide();
           },
-          child: const Text('Clear'),
+          child: const Text('Clear overlays'),
         ),
       ],
     );

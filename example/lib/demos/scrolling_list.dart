@@ -20,6 +20,27 @@ class _ScrollingListDemoState extends State<ScrollingListDemo> {
   final GlobalKey _buriedKey = GlobalKey();
   static const int _buriedIndex = 28;
 
+  static const List<(IconData, String)> _settings = <(IconData, String)>[
+    (Icons.wifi_rounded, 'Wi-Fi'),
+    (Icons.bluetooth_rounded, 'Bluetooth'),
+    (Icons.notifications_rounded, 'Notifications'),
+    (Icons.volume_up_rounded, 'Sound & haptics'),
+    (Icons.lock_rounded, 'Privacy & security'),
+    (Icons.account_circle_rounded, 'Account'),
+    (Icons.cloud_rounded, 'Backup & sync'),
+    (Icons.language_rounded, 'Language & region'),
+    (Icons.battery_full_rounded, 'Battery'),
+    (Icons.storage_rounded, 'Storage'),
+    (Icons.accessibility_rounded, 'Accessibility'),
+    (Icons.keyboard_rounded, 'Keyboard'),
+    (Icons.print_rounded, 'Printing'),
+    (Icons.location_on_rounded, 'Location'),
+    (Icons.update_rounded, 'Software update'),
+  ];
+
+  (IconData, String) _settingFor(int index) =>
+      _settings[index % _settings.length];
+
   @override
   void dispose() {
     _scroll.dispose();
@@ -30,6 +51,7 @@ class _ScrollingListDemoState extends State<ScrollingListDemo> {
   Widget build(BuildContext context) {
     return DemoScaffold(
       title: 'Scrolling list',
+      subtitle: 'Auto scroll-into-view, then drift-free tracking.',
       // A non-lazy scroll view, like a real settings screen: every row is
       // built even when off-screen. Auto scroll-into-view needs the target's
       // BuildContext to exist — a lazy ListView.builder never builds rows this
@@ -39,18 +61,18 @@ class _ScrollingListDemoState extends State<ScrollingListDemo> {
         child: Column(
           children: <Widget>[
             for (int index = 0; index < 60; index++)
-              ListTile(
-                key: index == _buriedIndex ? _buriedKey : null,
-                leading: Icon(
-                  index == _buriedIndex ? Icons.dark_mode : Icons.settings,
+              if (index == _buriedIndex)
+                ListTile(
+                  key: _buriedKey,
+                  leading: const Icon(Icons.dark_mode_rounded),
+                  title: const Text('Dark mode'),
+                  subtitle: const Text('The setting we want the user to find'),
+                )
+              else
+                ListTile(
+                  leading: Icon(_settingFor(index).$1),
+                  title: Text(_settingFor(index).$2),
                 ),
-                title: Text(
-                  index == _buriedIndex ? 'Dark mode' : 'Setting $index',
-                ),
-                subtitle: index == _buriedIndex
-                    ? const Text('The one we want to find')
-                    : null,
-              ),
           ],
         ),
       ),
@@ -90,7 +112,7 @@ class _ScrollingListDemoState extends State<ScrollingListDemo> {
             barrier: const SpotBarrier.passthrough(),
             duration: const Duration(seconds: 30),
           ),
-          child: const Text('No auto-scroll, scroll it yourself'),
+          child: const Text('Track it while you scroll'),
         ),
       ],
     );

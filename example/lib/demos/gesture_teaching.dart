@@ -101,6 +101,7 @@ class _GestureTeachingDemoState extends State<GestureTeachingDemo> {
   Widget build(BuildContext context) {
     return DemoScaffold(
       title: 'Gesture teaching',
+      subtitle: 'Teach gestures, not just locations.',
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -182,18 +183,18 @@ class _GestureTeachingDemoState extends State<GestureTeachingDemo> {
       actions: <Widget>[
         FilledButton(
           onPressed: _teachDrag,
-          child: const Text('Teach: drag to archive'),
+          child: const Text('Teach the drag'),
         ),
         FilledButton.tonal(
           onPressed: _teachPinch,
-          child: const Text('Teach: pinch to zoom'),
+          child: const Text('Teach the pinch'),
         ),
         TextButton(
           onPressed: () => setState(() {
             _archived = false;
             _photoScale = 1.0;
           }),
-          child: const Text('Reset'),
+          child: const Text('Reset demo'),
         ),
       ],
     );

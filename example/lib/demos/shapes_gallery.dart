@@ -37,6 +37,7 @@ class _ShapesGalleryDemoState extends State<ShapesGalleryDemo> {
   Widget build(BuildContext context) {
     return DemoScaffold(
       title: 'Shapes gallery',
+      subtitle: 'The cut-out can take any outline you like.',
       body: Center(
         child: Wrap(
           spacing: 24.0,
@@ -53,7 +54,10 @@ class _ShapesGalleryDemoState extends State<ShapesGalleryDemo> {
               child: const SizedBox(
                 width: 140.0,
                 height: 72.0,
-                child: Center(child: Text('rounded 20')),
+                child: Center(
+                  child:
+                      Text('Rounded 20', style: TextStyle(color: Colors.white)),
+                ),
               ),
             ),
             Material(
@@ -63,7 +67,9 @@ class _ShapesGalleryDemoState extends State<ShapesGalleryDemo> {
               child: const SizedBox(
                 width: 160.0,
                 height: 48.0,
-                child: Center(child: Text('stadium')),
+                child: Center(
+                  child: Text('Stadium', style: TextStyle(color: Colors.white)),
+                ),
               ),
             ),
             Container(
@@ -72,7 +78,8 @@ class _ShapesGalleryDemoState extends State<ShapesGalleryDemo> {
               height: 60.0,
               color: Colors.deepOrange,
               alignment: Alignment.center,
-              child: const Text('plain box'),
+              child: const Text('Plain box',
+                  style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
@@ -86,7 +93,7 @@ class _ShapesGalleryDemoState extends State<ShapesGalleryDemo> {
               RingStyle(color: Color(0xFFFFC107), width: 5.0),
             ],
           ),
-          child: const Text('auto → circle'),
+          child: const Text('Detect: circle'),
         ),
         FilledButton(
           onPressed: () => _show(
@@ -97,7 +104,7 @@ class _ShapesGalleryDemoState extends State<ShapesGalleryDemo> {
               RingStyle(color: Color(0xFF80CBC4), width: 2.0, gap: 5.0),
             ],
           ),
-          child: const Text('auto → mirrors radius 20'),
+          child: const Text('Detect: rounded 20'),
         ),
         FilledButton(
           onPressed: () => _show(
@@ -109,7 +116,7 @@ class _ShapesGalleryDemoState extends State<ShapesGalleryDemo> {
               RingStyle(color: Color(0xFF1A237E), width: 3.0, gap: 3.0),
             ],
           ),
-          child: const Text('auto → stadium'),
+          child: const Text('Detect: stadium'),
         ),
         FilledButton.tonal(
           onPressed: () => _show(
@@ -127,7 +134,7 @@ class _ShapesGalleryDemoState extends State<ShapesGalleryDemo> {
               ),
             ],
           ),
-          child: const Text('forced circle'),
+          child: const Text('Force a circle'),
         ),
         FilledButton.tonal(
           onPressed: () => _show(
@@ -138,7 +145,7 @@ class _ShapesGalleryDemoState extends State<ShapesGalleryDemo> {
               RingStyle(color: Color(0xFFFF5722), width: 6.0, gap: 4.0),
             ],
           ),
-          child: const Text('rrect 28'),
+          child: const Text('Rounded rect (28)'),
         ),
         OutlinedButton(
           onPressed: () => _show(
@@ -165,7 +172,7 @@ class _ShapesGalleryDemoState extends State<ShapesGalleryDemo> {
               RingStyle(color: Color(0xFFFFEB3B), width: 2.0, gap: 6.0),
             ],
           ),
-          child: const Text('custom diamond path'),
+          child: const Text('Custom diamond path'),
         ),
       ],
     );

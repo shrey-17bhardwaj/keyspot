@@ -36,6 +36,7 @@ class _ThemingDemoState extends State<ThemingDemo> {
   Widget build(BuildContext context) {
     return DemoScaffold(
       title: 'Theming',
+      subtitle: 'Rings, barriers and custom pointer artwork.',
       body: Center(
         child: FilledButton.icon(
           key: _targetKey,
@@ -52,7 +53,7 @@ class _ThemingDemoState extends State<ThemingDemo> {
             barrier: const SpotBarrier.dismissOnTap(),
             duration: const Duration(seconds: 30),
           ),
-          child: const Text('Neon rings'),
+          child: const Text('Neon ring stack'),
         ),
         FilledButton.tonal(
           onPressed: () => widget.keyspot.spotlight(
@@ -61,7 +62,7 @@ class _ThemingDemoState extends State<ThemingDemo> {
             barrier: const SpotBarrier.dismissOnTap(),
             duration: const Duration(seconds: 30),
           ),
-          child: const Text('No rings at all'),
+          child: const Text('Spotlight with no rings'),
         ),
         OutlinedButton(
           onPressed: () => widget.keyspot.pointer.show(
