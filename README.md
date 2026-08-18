@@ -2,6 +2,7 @@
 
 **Spotlights and guided hand gestures for Flutter — anchored to a GlobalKey, tracked live, never drifting.**
 
+[![pub package](https://img.shields.io/pub/v/keyspot.svg)](https://pub.dev/packages/keyspot)
 [![CI](https://github.com/shrey-17bhardwaj/keyspot/actions/workflows/ci.yml/badge.svg)](https://github.com/shrey-17bhardwaj/keyspot/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -65,9 +66,13 @@ Zero runtime dependencies; the hand is a `CustomPainter`, not an asset.
 
 ```yaml
 dependencies:
-  keyspot:
-    git:
-      url: https://github.com/shrey-17bhardwaj/keyspot.git
+  keyspot: ^0.3.0
+```
+
+Or:
+
+```sh
+flutter pub add keyspot
 ```
 
 Requires Dart ≥ 3.4 and Flutter ≥ 3.22.
