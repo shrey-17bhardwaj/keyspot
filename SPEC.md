@@ -4,8 +4,8 @@
 > package. Hand this file to an engineer (or an AI coding agent) in an empty repository and it
 > contains every decision needed to build, test, document, and publish the package without
 > referring back to the original app code. The original reference implementation lived in a
-> private app (`mira-app` student onboarding module); this is a **clean-room rewrite spec** —
-> no code is to be copied from that repository.
+> private, closed-source codebase; this is a **clean-room rewrite spec** — no code is to be
+> copied from that codebase.
 
 ---
 
@@ -204,8 +204,8 @@ sealed class SpotShape {
 `SpotShape.auto()` resolution: if the target's render object (or a descendant within one
 level) is a `RenderClipRRect` / has a resolvable `ShapeBorder` via `Material`/`DecoratedBox`,
 mirror its rounding; else if `width ≈ height` (within 20%) use circle; else `rrect(radius:
-12)`. This replaces the reference implementation's hack of type-checking a proprietary
-`PressableContainer` widget. Keep `auto` best-effort and documented as such.
+12)`. This replaces the reference implementation's hack of type-checking a proprietary,
+app-specific widget. Keep `auto` best-effort and documented as such.
 
 ### 3.7 Rings & theme
 
@@ -439,8 +439,8 @@ didn't create; controller lifetime belongs to the user.
 6. `Future.delayed(16ms)` frame hacks → `endOfFrame`.
 7. Screen-fraction pointer sizing → fixed logical px via `PointerStyle.size`.
 8. Unconditional `debugPrint` → injected logger, silent default.
-9. Hard-coded app types/colors/assets/config (`PressableContainer`, `AppColors`, SVGs,
-   `AppConfig.isPersonalMode`) → `SpotShape.auto`, `KeyspotTheme`, painted hand, `retryFrames` param.
+9. Hard-coded app-specific types, colors, assets and config → `SpotShape.auto`, `KeyspotTheme`,
+   painted hand, `retryFrames` param.
 10. `IgnorePointer`-everything (taps leak through the dim layer) → `SpotBarrier`, default `block`.
 
 ---
