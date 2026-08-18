@@ -10,7 +10,7 @@
 > the full design rationale.
 
 **[▶ Try the live demo](https://shrey-17bhardwaj.github.io/keyspot/)** — all
-eight showcase pages, built from `example/` on every push to `main`.
+seven showcase pages, built from `example/` on every push to `main`.
 
 ---
 
@@ -71,7 +71,7 @@ Each row maps to a page in the [example app](example/lib/demos).
 | Feature announcement after an update | one-off spotlight with `SpotBarrier.dismissOnTap()` | `basic_spotlight` |
 | Narrated step that holds while audio plays | `spotlight(until: playNarration)` | `basic_spotlight` |
 | Walkthrough where the user must actually perform each step | `SpotBarrier.targetOnly()` / `StepAdvance.tapTarget` | `basic_spotlight`, `full_tour` |
-| Desktop/web product tour with mouse users | `PointerStyle.builder` cursor swap, window-resize tracking | `theming`, `drift_torture_test` |
+| Desktop/web product tour with mouse users | `PointerStyle.builder` cursor swap, window-resize tracking | `theming` |
 
 ## Installation
 
@@ -571,7 +571,7 @@ cd example
 flutter run          # any device; -d chrome and -d macos are good first picks
 ```
 
-Eight pages, one per use case:
+Seven pages, one per use case:
 
 | Page | Shows |
 |---|---|
@@ -579,7 +579,6 @@ Eight pages, one per use case:
 | `shapes_gallery` | `auto` resolution against real Material shapes, forced shapes, a custom path |
 | `pointer_playground` | show/moveTo/sweep/tapPulse with sliders for duration, rotation, arc |
 | `scrolling_list` | auto scroll-into-view, then drift-free tracking while you scroll |
-| `drift_torture_test` | a target that orbits, rotates and resizes while the spotlight stays glued |
 | `full_tour` | 7 steps, content cards, back/skip, per-step ring colours, storage |
 | `gesture_teaching` | drag taught with an arc glide, pinch taught with a two-finger sweep |
 | `theming` | neon ring stacks, ringless spotlights, emoji / SVG / animated / cursor pointers |

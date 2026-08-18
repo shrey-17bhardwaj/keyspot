@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:keyspot/keyspot.dart';
 
 import 'demos/basic_spotlight.dart';
-import 'demos/drift_torture_test.dart';
 import 'demos/full_tour.dart';
 import 'demos/gesture_teaching.dart';
 import 'demos/pointer_playground.dart';
@@ -112,13 +111,6 @@ List<Demo> buildDemos() => const <Demo>[
         builder: _scrollingList,
       ),
       Demo(
-        title: 'Drift torture test',
-        blurb: 'A target that never sits still. The spotlight keeps up.',
-        icon: Icons.motion_photos_on_rounded,
-        color: Color(0xFFD81B60),
-        builder: _driftTorture,
-      ),
-      Demo(
         title: 'Full tour',
         blurb: 'Seven guided steps with cards, back, skip and memory.',
         icon: Icons.route_rounded,
@@ -148,7 +140,6 @@ Widget _shapesGallery(KeyspotController k) => ShapesGalleryDemo(keyspot: k);
 Widget _pointerPlayground(KeyspotController k) =>
     PointerPlaygroundDemo(keyspot: k);
 Widget _scrollingList(KeyspotController k) => ScrollingListDemo(keyspot: k);
-Widget _driftTorture(KeyspotController k) => DriftTortureTestDemo(keyspot: k);
 Widget _fullTour(KeyspotController k) => FullTourDemo(keyspot: k);
 Widget _gestureTeaching(KeyspotController k) => GestureTeachingDemo(keyspot: k);
 Widget _theming(KeyspotController k) => ThemingDemo(keyspot: k);
