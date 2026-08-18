@@ -9,6 +9,9 @@
 > implemented and tested; the API may still move before 1.0. See `SPEC.md` for
 > the full design rationale.
 
+**[▶ Try the live demo](https://shrey-17bhardwaj.github.io/keyspot/)** — all
+eight showcase pages, built from `example/` on every push to `main`.
+
 ---
 
 - [Why keyspot?](#why-keyspot)
@@ -310,8 +313,9 @@ keyspot.pointer.phase;      // idle → moving → arrived
 keyspot.pointer.isVisible;
 ```
 
-The glow dot at the fingertip lerps from `dotColor` to `arrivedDotColor`
-exactly when a glide finishes — never optimistically before.
+By default the pointer is just the hand. Opt into a glow dot at the fingertip
+with `PointerStyle(showGlowDot: true)` — its colour lerps from `dotColor` to
+`arrivedDotColor` exactly when a glide finishes, never optimistically before.
 
 ### Anchors
 
@@ -361,7 +365,6 @@ PointerStyle(
       const Icon(Icons.north_west, size: 32, color: Colors.black87),
   size: 32,
   hotspot: Alignment.topLeft,
-  showGlowDot: false,
 )
 ```
 

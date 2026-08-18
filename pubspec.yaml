@@ -3,6 +3,7 @@ description: >-
   Drift-free spotlight highlights and animated hand-pointer gestures for
   onboarding and feature tours. Anchored to GlobalKeys, tracked live every frame.
 version: 0.3.0
+homepage: https://shrey-17bhardwaj.github.io/keyspot/
 repository: https://github.com/shrey-17bhardwaj/keyspot
 issue_tracker: https://github.com/shrey-17bhardwaj/keyspot/issues
 
