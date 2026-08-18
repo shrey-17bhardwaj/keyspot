@@ -43,7 +43,6 @@ class _KeyspotPointerOverlayState extends State<KeyspotPointerOverlay>
   late final AnimationController _visibility;
   late final AnimationController _glide;
   late final AnimationController _rotation;
-  late final AnimationController _glow;
   late final AnimationController _tap;
   Ticker? _ticker;
 
@@ -74,13 +73,6 @@ class _KeyspotPointerOverlayState extends State<KeyspotPointerOverlay>
       duration: const Duration(milliseconds: 320),
       value: 1.0,
     );
-    // Started in show() and stopped in hide(): an always-repeating controller
-    // would keep the app rendering at 60fps for the entire session.
-    _glow = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 900),
-      value: 1.0,
-    );
     _tap = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 320),
@@ -104,7 +96,6 @@ class _KeyspotPointerOverlayState extends State<KeyspotPointerOverlay>
     _visibility.dispose();
     _glide.dispose();
     _rotation.dispose();
-    _glow.dispose();
     _tap.dispose();
     super.dispose();
   }
@@ -147,9 +138,6 @@ class _KeyspotPointerOverlayState extends State<KeyspotPointerOverlay>
       _phase = PointerPhase.idle;
     });
     _startTicker();
-    if (!_glow.isAnimating && !_reduceMotion) {
-      unawaited(_glow.repeat(reverse: true));
-    }
     if (wasVisible) {
       return;
     }
@@ -260,7 +248,6 @@ class _KeyspotPointerOverlayState extends State<KeyspotPointerOverlay>
       return;
     }
     _stopTicker();
-    _glow.stop();
     setState(() {
       _visible = false;
       _position = null;
@@ -380,7 +367,6 @@ class _KeyspotPointerOverlayState extends State<KeyspotPointerOverlay>
       animation: Listenable.merge(<Listenable>[
         _visibility,
         _rotation,
-        _glow,
         _tap,
       ]),
       builder: (BuildContext context, Widget? _) {
@@ -440,20 +426,6 @@ class _KeyspotPointerOverlayState extends State<KeyspotPointerOverlay>
                               diameter: size * 0.9,
                             ),
                           ),
-                        if (style.showGlowDot)
-                          Align(
-                            alignment: style.hotspot,
-                            child: _GlowDot(
-                              pulse: _glow.value,
-                              color: Color.lerp(
-                                    style.dotColor,
-                                    style.arrivedDotColor,
-                                    _phase == PointerPhase.arrived ? 1.0 : 0.0,
-                                  ) ??
-                                  style.dotColor,
-                              diameter: size * 0.22,
-                            ),
-                          ),
                       ],
                     ),
                   ),
@@ -463,43 +435,6 @@ class _KeyspotPointerOverlayState extends State<KeyspotPointerOverlay>
           ),
         );
       },
-    );
-  }
-}
-
-class _GlowDot extends StatelessWidget {
-  const _GlowDot({
-    required this.pulse,
-    required this.color,
-    required this.diameter,
-  });
-
-  final double pulse;
-  final Color color;
-  final double diameter;
-
-  @override
-  Widget build(BuildContext context) {
-    final double halo = diameter * (1.6 + 0.6 * pulse);
-    return SizedBox(
-      width: halo,
-      height: halo,
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          DecoratedBox(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: color.withAlpha((70.0 * (1.0 - pulse * 0.6)).round()),
-            ),
-            child: SizedBox(width: halo, height: halo),
-          ),
-          DecoratedBox(
-            decoration: BoxDecoration(shape: BoxShape.circle, color: color),
-            child: SizedBox(width: diameter, height: diameter),
-          ),
-        ],
-      ),
     );
   }
 }

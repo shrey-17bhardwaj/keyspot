@@ -1,9 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 /// What the pointer is currently doing.
-///
-/// Styling reacts to this: the glow dot lerps from
-/// [PointerStyle.dotColor] to [PointerStyle.arrivedDotColor] on [arrived].
 enum PointerPhase {
   /// Mounted and stationary, having never moved or after being told to stop.
   idle,

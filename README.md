@@ -313,9 +313,8 @@ keyspot.pointer.phase;      // idle → moving → arrived
 keyspot.pointer.isVisible;
 ```
 
-By default the pointer is just the hand. Opt into a glow dot at the fingertip
-with `PointerStyle(showGlowDot: true)` — its colour lerps from `dotColor` to
-`arrivedDotColor` exactly when a glide finishes, never optimistically before.
+The pointer is just the hand — no extra markers around it. `tapPulse` expands
+a ripple ring from the hotspot; `PointerStyle.dotColor` sets its colour.
 
 ### Anchors
 
