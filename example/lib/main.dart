@@ -134,7 +134,8 @@ List<Demo> buildDemos() => const <Demo>[
       ),
       Demo(
         title: 'Theming',
-        blurb: 'Neon rings, bare spotlights, emoji and cursor pointers.',
+        blurb: 'Neon rings, bare spotlights, and pointers as emoji, '
+            'SVG or live animation.',
         icon: Icons.palette_rounded,
         color: Color(0xFF5E35B1),
         builder: _theming,

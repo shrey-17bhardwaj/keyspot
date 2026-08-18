@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Used only to demo an SVG pointer — keyspot itself has zero dependencies.
+  flutter_svg: ^2.0.0
   keyspot:
     path: ../
 

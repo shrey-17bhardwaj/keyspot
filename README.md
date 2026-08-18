@@ -348,8 +348,10 @@ gestures far better than straight lines.
 
 ### Custom pointer artwork
 
-Swap the built-in painted hand for anything — an emoji, an image, a Lottie
-animation, a desktop cursor. Your widget, your dependency:
+The built-in hand is only the default. `PointerStyle.builder` is a plain
+`WidgetBuilder`, so **any widget can be the pointer** — an emoji, a PNG, an
+animated GIF, an SVG, a Lottie or Rive animation, or a widget you animate
+yourself:
 
 ```dart
 // An emoji hand.
@@ -366,11 +368,37 @@ PointerStyle(
   size: 32,
   hotspot: Alignment.topLeft,
 )
+
+// A PNG or an animated GIF — Image plays GIFs natively, no extra package.
+PointerStyle(
+  builder: (BuildContext context) => Image.asset('assets/pointing_hand.gif'),
+  size: 64,
+)
+
+// An SVG via flutter_svg, or an animation via lottie / rive —
+// your widget, your dependency; keyspot itself depends on nothing.
+PointerStyle(
+  builder: (BuildContext context) => SvgPicture.asset('assets/hand.svg'),
+  size: 56,
+)
 ```
 
-`size` is fixed logical pixels — not a fraction of the screen — so the pointer
-stays sane on desktop windows. Opt into text-scale sizing with
-`scaleWithTextScaler: true`.
+What to know when you swap the artwork:
+
+- Your widget is laid out in a `size` × `size` box (fixed logical pixels — not
+  a screen fraction — so it stays sane on desktop windows). Use a `FittedBox`
+  if the artwork isn't square. Opt into text-scale sizing with
+  `scaleWithTextScaler: true`.
+- **`hotspot` is the important one**: it declares which point of *your*
+  artwork sits exactly on the anchor (a cursor's arrow tip is `topLeft`, an
+  upward finger is `topCenter`). Rotation, the entry scale and the tap-pulse
+  squash all pivot around this point, so the tip stays planted through every
+  animation.
+- Glides, arcs, rotation, `tapPulse`, show/hide fades and live tracking are
+  inherited unchanged — the choreography layer doesn't care what it's moving.
+- Animated artwork (GIF/Lottie/Rive) plays on its own clock while keyspot
+  moves it around; the two don't interfere.
+- `flipForRtl: true` mirrors the artwork in right-to-left locales.
 
 ## Tours
 
@@ -555,7 +583,7 @@ Eight pages, one per use case:
 | `drift_torture_test` | a target that orbits, rotates and resizes while the spotlight stays glued |
 | `full_tour` | 7 steps, content cards, back/skip, per-step ring colours, storage |
 | `gesture_teaching` | drag taught with an arc glide, pinch taught with a two-finger sweep |
-| `theming` | neon ring stacks, ringless spotlights, emoji and cursor pointers |
+| `theming` | neon ring stacks, ringless spotlights, emoji / SVG / animated / cursor pointers |
 
 ## Platforms
 
