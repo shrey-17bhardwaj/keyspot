@@ -17,7 +17,7 @@ class PointerStyle {
     this.handOutlineColor = const Color(0x66000000),
     this.dotColor = const Color(0xFF4DD0E1),
     this.arrivedDotColor = const Color(0xFF7C4DFF),
-    this.showGlowDot = true,
+    this.showGlowDot = false,
     this.hotspot = const Alignment(-0.34, -0.92),
     this.flipForRtl = false,
     this.scaleWithTextScaler = false,
@@ -49,6 +49,10 @@ class PointerStyle {
   final Color arrivedDotColor;
 
   /// Whether to paint the pulsing glow dot at the pointer's hotspot.
+  ///
+  /// Off by default, so the pointer is just the hand. Enable it when you want
+  /// an explicit "this exact point" marker at the fingertip; its colour lerps
+  /// from [dotColor] to [arrivedDotColor] when a glide arrives.
   final bool showGlowDot;
 
   /// Which point of the pointer widget sits exactly on the resolved anchor.

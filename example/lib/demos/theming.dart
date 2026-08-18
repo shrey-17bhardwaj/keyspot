@@ -83,7 +83,6 @@ class _ThemingDemoState extends State<ThemingDemo> {
               builder: _cursorPointer,
               size: 32.0,
               hotspot: Alignment.topLeft,
-              showGlowDot: false,
             ),
           ),
           child: const Text('Desktop cursor'),
