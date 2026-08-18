@@ -1,0 +1,23 @@
+# A .pubignore replaces .gitignore for `dart pub publish` purposes rather than
+# adding to it, so every generated/IDE path that must never ship is listed
+# explicitly here too.
+
+# Generated
+.dart_tool/
+build/
+example/.dart_tool/
+example/build/
+pubspec.lock
+example/pubspec.lock
+.flutter-plugins-dependencies
+
+# IDE
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# Kept in git for GitHub/README purposes, not part of the published package.
+doc/
+SPEC.md

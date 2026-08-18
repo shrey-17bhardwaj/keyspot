@@ -7,6 +7,15 @@
 
 **[▶ Try the live demo](https://shrey-17bhardwaj.github.io/keyspot/)**
 
+<p>
+  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/scroll_tracking.gif" width="45%" alt="A spotlight tracking a target while the user scrolls" />
+  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/pointer_sweep.gif" width="45%" alt="The animated hand pointer sweeping along an arc between two targets" />
+</p>
+<p>
+  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/tour.gif" width="45%" alt="A multi-step guided tour with content cards" />
+  <img src="https://raw.githubusercontent.com/shrey-17bhardwaj/keyspot/main/doc/gifs/shapes.gif" width="45%" alt="Spotlight shapes: circle, rounded rect, stadium and a custom path" />
+</p>
+
 ---
 
 - [Why keyspot?](#why-keyspot)
