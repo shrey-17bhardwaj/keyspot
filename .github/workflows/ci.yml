@@ -33,7 +33,8 @@ jobs:
         run: flutter analyze --fatal-warnings
 
       - name: Test with coverage
-        run: flutter test --coverage
+        # Goldens are macOS-rendered; the golden job below owns them.
+        run: flutter test --coverage -x golden
 
       - name: Upload coverage
         uses: actions/upload-artifact@v4
@@ -48,6 +49,29 @@ jobs:
         run: |
           dart pub global activate pana
           dart pub global run pana --no-warning --exit-code-threshold 20 .
+
+  golden:
+    name: Golden tests (macOS)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run golden tests
+        run: flutter test --tags golden
+
+      - name: Upload failure diffs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-failures
+          path: test/golden/failures
 
   example-web:
     name: Build example for web
