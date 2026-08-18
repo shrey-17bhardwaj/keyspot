@@ -1,0 +1,9 @@
+include: ../analysis_options.yaml
+
+linter:
+  rules:
+    # Tests deliberately start a future, pump frames, and assert on the result
+    # later. Requiring `await` here would defeat the point of the test.
+    unawaited_futures: false
+    # Test helpers are not public API.
+    public_member_api_docs: false
